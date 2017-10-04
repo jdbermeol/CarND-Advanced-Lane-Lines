@@ -99,4 +99,16 @@ Here's a [link to my video result](./test_videos_output/project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Here I will list potential issues on the approach and techniques I used.
+
+1. General performance is slow; it could be improved with a GPU implementation as most operations are convolutions and matrix multiplications.
+
+2. Color intensity and the number of pixels of the line at the end of the road are a problem, looking for a different color space to work in that section or ways to improve contrast on that part of the image would be substantial.
+
+3. Initial guess should not use half of the image to locate pixels related to the line; it should use a smaller section where it is more likely to find the line.
+
+4. In the challenge video, some white signals where an issue as they show on the binary image, that is why location would be a way to filter the influence of those signals. 
+
+5. Lighting conditions, shadows, discoloration, etc. Evaluate methods to increase contrast.
+
+6. Assuming that if there are no pixels to define a line, the best possible fit is the fit of the previous fit is the best approach, could be problematic on old streets or new roads without lines. It is important also to detect sidewalk lines.
